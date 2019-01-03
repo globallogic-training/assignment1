@@ -15,12 +15,13 @@ body {
     background-color: rgba(255, 72, 0, 0.801);
     min-height: 8%;
     justify-content: center;
+    padding: 0 17%;
 }
 .header-section > .header-section-inner{
     flex: 0.5;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: flex-start; */
     flex-direction: row;
 }
 .header-section > .header-section-inner > .nav-button{
@@ -55,18 +56,18 @@ body {
     flex-direction: row;
     justify-content: center;
     min-height: 16%;
-    padding: 0 15%;
+    padding: 0 17%;
 }
 
 .sub-header > .left-section{
     display: inherit;
-    justify-content: center;
-    flex: 0.4 0.4 auto;
+    justify-content: flex-start;
+    flex: 0.4 0.4;
 }
 .sub-header > .right-section{
     display: inherit;
     justify-content: 'center';
-    flex: 0.2 0.2 auto;
+    flex: 0.2 0.2;
     color: #002b5e;
     align-items: center;
 }
@@ -93,15 +94,15 @@ body {
 }
 .nav-bar-section > .left-section{
     display: inherit;
-    justify-content: center;
+    justify-content: flex-start;
     flex: 0.3 0.3 auto;
-    margin-left: 5%;
-    margin-right: 5%;
+    /* margin-left: 5%;
+    margin-right: 5%; */
     flex-direction: row
 }
 .nav-bar-section > .right-section{
-    display: inherit;
-    justify-content: 'center';
+    display: flex;
+    justify-content: flex-end;
     flex: 0.5 0.5 auto;
     align-items: center;
 }

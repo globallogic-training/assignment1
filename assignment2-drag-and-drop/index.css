@@ -1,0 +1,53 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+}
+.header-section{
+    min-height: 8%;
+    background-color: burlywood
+}
+.body-section{
+    padding-top: 3%;
+    display: flex;
+    flex: 1 1;
+    flex-direction: row;
+}
+.list-section{
+    display: flex;
+    flex-direction: column;
+    flex: 3 3;
+    overflow:hidden; overflow-y:scroll;
+    height:85%; width:18%;
+}
+.list-sheet{
+    display: flex;
+    flex-direction: row;
+    flex: 7 7; 
+}
+.dropable-element-col{
+    flex: 3.3 3.3;
+    padding: 0 5px;
+    
+}
+.dropable-element-row{
+    flex: 1 1;
+    padding: 0 5px;
+}
+
+.list-item{
+    /* display: flex; */
+    /* flex: 9 9; */
+    margin-bottom:4px;
+    padding: 5 10 5 10;
+    text-align: center;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.dropable-element{
+    min-height: 33px;
+    margin: 4px 0;
+    border: 1px solid gray;
+    border-radius: 5px;
+    min-width: 25%;
+
+}

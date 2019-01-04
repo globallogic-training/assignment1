@@ -512,6 +512,11 @@ function onRemove(ev) {
     ev.target.parentNode.parentNode.setAttribute("ondragover", "dragover_handler(event)");
 
     var elements = document.getElementById("myList");
+    ev.target.previousSibling.setAttribute("draggable", true)
+    ev.target.previousSibling.style.display = 'block';
+    ev.target.previousSibling.style.borderTopRightRadius = '5px';
+    ev.target.previousSibling.style.borderBottomRightRadius = '5px';
+    ev.target.previousSibling.style.marginBottom = '4px';
     elements.insertBefore(ev.target.previousSibling, elements.firstChild);
     ev.target.parentNode.parentNode.removeChild(ev.target.parentNode);
 
@@ -562,6 +567,12 @@ function drop_handler(ev) {
     z.style.flexDirection = 'row'
     z.appendChild(document.getElementById(data));
     z.innerHTML = z.innerHTML + '<button onclick="onRemove(event)"> x </button>'
+    z.firstChild.setAttribute("draggable", false);
+    z.firstChild.style.display = 'flex';
+    z.firstChild.style.flex = '9 9';
+    z.firstChild.style.borderTopRightRadius = 0;
+    z.firstChild.style.borderBottomRightRadius = 0;
+    z.firstChild.style.marginBottom = 0;
 
     console.log('Data ')
 

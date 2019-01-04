@@ -1,3 +1,6 @@
+body{
+    margin: 0;
+}
 .main-container{
     display: flex;
     flex-direction: column;
@@ -18,11 +21,13 @@
     flex: 3 3;
     overflow:hidden; overflow-y:scroll;
     height:85%; width:18%;
+    margin: 0px 15px;
 }
 .list-sheet{
     display: flex;
     flex-direction: row;
     flex: 7 7; 
+    margin-right: 15px;
 }
 .dropable-element-col{
     flex: 3.3 3.3;
@@ -38,16 +43,29 @@
     /* display: flex; */
     /* flex: 9 9; */
     margin-bottom:4px;
-    padding: 5 10 5 10;
+    padding: 10;
     text-align: center;
     border: 1px solid gray;
     border-radius: 5px;
 }
+.list-item:hover{
+    background-color: rgb(0, 128, 117)
+}
 .dropable-element{
-    min-height: 33px;
+    min-height: 43px;
     margin: 4px 0;
     border: 1px solid gray;
     border-radius: 5px;
     min-width: 25%;
 
+}
+button{
+    background: white;
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-left: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 0 10;
 }

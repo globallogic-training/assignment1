@@ -501,7 +501,7 @@ var users = [{
 }];
 
 function onRemove(ev) {
-    console.log('on remove ', ev.target.previousSibling)
+    // console.log('on remove ', ev.target.previousSibling)
     ev.target.parentNode.parentNode.style.border = '1px solid gray';
     ev.target.parentNode.parentNode.style.background = 'white';
 
@@ -527,10 +527,23 @@ function onRemove(ev) {
 }
 function drag_handler(ev) {
     // console.log("Drag");
-}
 
+}
+function ondragend_handler(ev){
+    for (var i = 1; i <= users.length; i++) {
+        if(!document.getElementById('s'+i).hasChildNodes()){
+            document.getElementById('s'+i).style.border = '1px gray solid';
+
+        }
+    }
+}
 function dragstart_handler(ev) {
-    // console.log("dragStart",ev);
+    for (var i = 1; i <= users.length; i++) {
+        var tempElement = document.getElementById('s'+i);
+        if(!tempElement.hasChildNodes()){
+            tempElement.style.border = '2px blue dotted';
+        }
+    }
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
@@ -543,42 +556,48 @@ function ondragexit_handler(ev) {
     // ev.target.style.background = "white";
 }
 function ondragleave_handler(ev) {
-    console.log('on drag leave', ev.currentTarget.style.cssText.indexOf('gray'))
+    // console.log('on drag leave', ev.currentTarget.style.cssText.indexOf('gray'))
     ev.target.style.background = "white";
 }
 
 
 function drop_handler(ev) {
     // console.log("Drop",ev);
-    ev.currentTarget.style.border = 0;
-    ev.currentTarget.style.background = "burlywood";
-    ev.currentTarget.removeAttribute('ondragexit')
-    ev.currentTarget.removeAttribute('ondragenter')
-    ev.currentTarget.removeAttribute('ondragleave')
-    ev.currentTarget.removeAttribute('ondrop')
-    ev.currentTarget.removeAttribute('ondragover')
-    // ev.currentTarget.appendChild('<button></button>')
-
-    ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-
-    // var tempElement = document.getElementById(ev.target.id);
-    var z = document.createElement('div'); // is a node
-    z.style.display = 'flex';
-    z.style.flexDirection = 'row'
-    z.appendChild(document.getElementById(data));
-    z.innerHTML = z.innerHTML + '<button onclick="onRemove(event)"> x </button>'
-    z.firstChild.setAttribute("draggable", false);
-    z.firstChild.style.display = 'flex';
-    z.firstChild.style.flex = '9 9';
-    z.firstChild.style.borderTopRightRadius = 0;
-    z.firstChild.style.borderBottomRightRadius = 0;
-    z.firstChild.style.marginBottom = 0;
-    z.firstChild.style.cursor = 'not-allowed'
-
-    console.log('Data ')
-
-    ev.target.appendChild(z);
+    ev.preventDefault();
+    if(document.getElementById(data)){
+        ev.currentTarget.style.border = 0;
+        ev.currentTarget.style.background = "burlywood";
+        ev.currentTarget.removeAttribute('ondragexit')
+        ev.currentTarget.removeAttribute('ondragenter')
+        ev.currentTarget.removeAttribute('ondragleave')
+        ev.currentTarget.removeAttribute('ondrop')
+        ev.currentTarget.removeAttribute('ondragover')
+        // ev.currentTarget.appendChild('<button></button>')
+    
+       
+        
+        // var tempElement = document.getElementById(ev.target.id);
+        var z = document.createElement('div'); // is a node
+        z.style.display = 'flex';
+        z.style.flexDirection = 'row'
+        z.appendChild(document.getElementById(data));
+        z.innerHTML = z.innerHTML + '<button onclick="onRemove(event)"> x </button>'
+        z.firstChild.setAttribute("draggable", false);
+        z.firstChild.style.display = 'flex';
+        z.firstChild.style.flex = '9 9';
+        z.firstChild.style.borderTopRightRadius = 0;
+        z.firstChild.style.borderBottomRightRadius = 0;
+        z.firstChild.style.marginBottom = 0;
+        z.firstChild.style.cursor = 'not-allowed'
+    
+        // console.log('Data ')
+    
+        ev.target.appendChild(z);
+    }else{
+        ev.currentTarget.style.background = 'white';
+    }
+    
     // ev.target.appendChild()
 }
 
@@ -600,7 +619,7 @@ for (var i = 1; i <= users.length; i++) {
     // elem.ondrag = 'drag_handler(event);'
     // elem.ondragstart = 'dragstart_handler(event);'
     // elem.draggable = 'true'
-    elements.innerHTML = elements.innerHTML + '<div id="' + i + '" class="list-item" ondrag="drag_handler(event);" ondragstart="dragstart_handler(event);" draggable="true">' + users[i - 1].first_name + ' ' + users[i - 1].last_name + '</Div>';
+    elements.innerHTML = elements.innerHTML + '<div id="' + i + '" class="list-item" ondragend="ondragend_handler(event)" ondrag="drag_handler(event);" ondragstart="dragstart_handler(event);" draggable="true">' + users[i - 1].first_name + ' ' + users[i - 1].last_name + '</Div>';
     // users[i].first_name + ' ' +users[i].last_name;
 
     // elements.appendChild(elem);

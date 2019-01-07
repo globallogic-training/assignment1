@@ -517,6 +517,7 @@ function onRemove(ev) {
     ev.target.previousSibling.style.borderTopRightRadius = '5px';
     ev.target.previousSibling.style.borderBottomRightRadius = '5px';
     ev.target.previousSibling.style.marginBottom = '4px';
+    ev.target.previousSibling.style.cursor= '-webkit-grab';
     elements.insertBefore(ev.target.previousSibling, elements.firstChild);
     ev.target.parentNode.parentNode.removeChild(ev.target.parentNode);
 
@@ -550,7 +551,7 @@ function ondragleave_handler(ev) {
 function drop_handler(ev) {
     // console.log("Drop",ev);
     ev.currentTarget.style.border = 0;
-    ev.currentTarget.style.background = "lightyellow";
+    ev.currentTarget.style.background = "burlywood";
     ev.currentTarget.removeAttribute('ondragexit')
     ev.currentTarget.removeAttribute('ondragenter')
     ev.currentTarget.removeAttribute('ondragleave')
@@ -573,6 +574,7 @@ function drop_handler(ev) {
     z.firstChild.style.borderTopRightRadius = 0;
     z.firstChild.style.borderBottomRightRadius = 0;
     z.firstChild.style.marginBottom = 0;
+    z.firstChild.style.cursor = 'not-allowed'
 
     console.log('Data ')
 

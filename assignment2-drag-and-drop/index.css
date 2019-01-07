@@ -22,12 +22,13 @@ body{
     overflow:hidden; overflow-y:scroll;
     height:85%; width:18%;
     margin: 0px 15px;
+    align-items: center
 }
 .list-sheet{
     display: flex;
     flex-direction: row;
     flex: 7 7; 
-    margin-right: 15px;
+    margin-right: 2.8%;
 }
 .dropable-element-col{
     flex: 3.3 3.3;
@@ -47,9 +48,11 @@ body{
     text-align: center;
     border: 1px solid gray;
     border-radius: 5px;
+    width: 80%;
 }
 .list-item:hover{
-    background-color: rgb(0, 128, 117)
+    background-color: rgb(71, 199, 192);
+    cursor: -webkit-grab;
 }
 .dropable-element{
     min-height: 43px;
@@ -68,4 +71,12 @@ button{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     padding: 0 10;
+    font-size: 20;
+    font-weight: 100;
+}
+button:hover {
+    cursor: pointer;
+    background-color: burlywood;
+    font-size: 25;
+    font-weight: 300;
 }

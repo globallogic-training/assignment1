@@ -13,7 +13,7 @@ body {
     flex: 0.5 0.5 auto;
     flex-direction: row;
     background-color: rgba(255, 72, 0, 0.801);
-    min-height: 8%;
+    min-height: 60px;
     justify-content: center;
     padding: 0 17%;
 }
@@ -55,7 +55,7 @@ body {
     align-items: center;
     flex-direction: row;
     justify-content: center;
-    min-height: 16%;
+    min-height: 120px;
     padding: 0 17%;
 }
 
@@ -186,7 +186,7 @@ input:not([type=submit]):not([type=file]), select, textarea {
     background-repeat: no-repeat;
     /* background-attachment: fixed; */
     background-position: center;
-    height: 60%;
+    height: 430px;
 }
 .bottom-section{
     flex: 1 1 auto;
@@ -300,7 +300,7 @@ input:not([type=submit]):not([type=file]), select, textarea {
 }
 .footer-heading{
     background-color: rgba(255, 72, 0, 0.801);
-    min-height: 10%;
+    min-height: 70px;
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -6,7 +6,12 @@ body {
 	flex-direction: column;
 }
 .header-section {
-	min-height: 8%;
+	min-height: 3em;
+	text-align: center;
+    line-height: 3em;
+	color: white;
+	font-size: 24;
+	font-weight: bold;
 	background-color: burlywood;
 }
 .body-section {

@@ -10,36 +10,42 @@ interface IProps {
 		first_name: string;
 		last_name: string;
 		gender: string;
-	},
-	dataIndex: number
+	};
+	users: {
+		id: number;
+		first_name: string;
+		last_name: string;
+		gender: string;
+	}[];
+	dataIndex: number;
+	setDragObject: any;
 }
 
 export default class ViewUserList extends React.Component<IProps, {}> {
 	dragHandler(ev: any): any {
-		// console.log("Drag");
+		// console.log("Drag", ev);
 	}
 
 	onDragEndHandler(ev: any): any {
-		// for (var i = 1; i <= this.props.users.length; i++) {
-		// 	if (!document.getElementById('s' + i).hasChildNodes()) {
-		// 		document.getElementById('s' + i).style.border = '1px gray solid';
-		// 	}
-		// }
+		this.props.users.map((item, index) => {
+			// let tempElement = document.getElementById('s' + index);
+			// if (!tempElement.hasChildNodes()) {
+			// 	tempElement.style.border = '1px gray solid';
+			// }
+		});
 	}
 
 	dragStartHandler(ev: any): any {
-		// for (var i = 1; i <= this.props.users.length; i++) {
-		// 	var tempElement = document.getElementById('s' + i);
-		// 	if (!tempElement.hasChildNodes()) {
-		// 		tempElement.style.border = '2px blue dotted';
-		// 	}
-		// }
-		// console.log('Drag Start',ev);
-		
-		ev.dataTransfer.setData('text', this.props.data.first_name +" "+ this.props.data.last_name);
+		this.props.users.map((item, index) => {
+			// let tempElement = document.getElementById('s' + index);
+			// if (!tempElement.hasChildNodes()) {
+			// 	tempElement.style.border = '2px blue dotted';
+			// }
+		});
+		this.props.setDragObject(this.props.dataIndex, this.props.data.first_name + ' ' + this.props.data.last_name);
 	}
 	render() {
-		const { data, dataIndex} = this.props;
+		const { data, dataIndex } = this.props;
 		return (
 			<div
 				id={dataIndex + ''}

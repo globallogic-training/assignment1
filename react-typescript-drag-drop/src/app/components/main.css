@@ -55,17 +55,22 @@ body {
 	border: 1px solid gray;
 	border-radius: 5px;
 	width: 80%;
+	padding: 10px 0px;
 }
 .list-item:hover {
 	background-color: rgb(71, 199, 192);
 	cursor: -webkit-grab;
 }
 .dropable-element {
+	display: flex;
 	min-height: 43px;
 	margin: 4px 0;
 	border: 1px solid gray;
 	border-radius: 5px;
 	min-width: 25%;
+    justify-content: center;
+	align-items: center;
+	color: white
 }
 button {
 	background: white;
@@ -78,10 +83,16 @@ button {
 	padding: 0 10;
 	font-size: 20;
 	font-weight: 100;
+	min-height: inherit;
 }
 button:hover {
 	cursor: pointer;
 	background-color: burlywood;
 	font-size: 25;
 	font-weight: 300;
+}
+.inner-sheet-content{
+	padding-left: 10px;
+    display: flex;
+    flex: 1;
 }

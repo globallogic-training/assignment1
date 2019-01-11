@@ -22,40 +22,37 @@ interface IProps {
 }
 
 export default class ViewUserList extends React.Component<IProps, {}> {
-	dragHandler(ev: any): any {
-		// console.log("Drag", ev);
-	}
 
-	onDragEndHandler(ev: any): any {
+	onDragEndHandler = (ev: any): any => {
 		this.props.users.map((item, index) => {
-			// let tempElement = document.getElementById('s' + index);
-			// if (!tempElement.hasChildNodes()) {
-			// 	tempElement.style.border = '1px gray solid';
-			// }
+			let tempElement = document.getElementById(`s${index}`);
+			if (!tempElement.hasChildNodes()) {
+				tempElement.style.border = '1px gray solid';
+			}
 		});
 	}
 
-	dragStartHandler(ev: any): any {
-		this.props.users.map((item, index) => {
-			// let tempElement = document.getElementById('s' + index);
-			// if (!tempElement.hasChildNodes()) {
-			// 	tempElement.style.border = '2px blue dotted';
-			// }
+	dragStartHandler = (ev: any): any => {
+		this.props.users.some((item, index): any => {
+			let tempElement = document.getElementById(`s${index}`);
+			if (!tempElement.hasChildNodes()) {
+				tempElement.style.border = '2px blue dotted';
+				return true;
+			}
 		});
-		this.props.setDragObject(this.props.dataIndex, this.props.data.first_name + ' ' + this.props.data.last_name);
+		this.props.setDragObject(this.props.dataIndex, `${this.props.data.first_name}  ${this.props.data.last_name}`);
 	}
+	
 	render() {
 		const { data, dataIndex } = this.props;
 		return (
 			<div
-				id={dataIndex + ''}
+				id={`${dataIndex}`}
 				className="list-item"
-				onDragEnd={(event) => this.onDragEndHandler(event)}
-				onDrag={(event) => this.dragHandler(event)}
-				onDragStart={(event) => this.dragStartHandler(event)}
+				onDragEnd={this.onDragEndHandler}
+				onDragStart={this.dragStartHandler}
 				draggable={true}
 			>
-				{' '}
 				{data.first_name} {data.last_name}
 			</div>
 		);

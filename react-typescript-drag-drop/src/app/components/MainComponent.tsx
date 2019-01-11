@@ -3,7 +3,7 @@ import ViewUserList from './ViewUserList';
 import DropSheet from './DropSheet';
 import './main.css';
 
-interface MyState {
+interface MainComState {
 	users: {
 		id: number;
 		first_name: string;
@@ -14,7 +14,9 @@ interface MyState {
 	name: string;
 	index: number;
 }
-export class MainComponent extends React.Component<{}, MyState> {
+
+export class MainComponent extends React.Component<{}, MainComState> {
+	
 	constructor(props: any) {
 		super(props);
 		this.state = {
@@ -724,6 +726,7 @@ export class MainComponent extends React.Component<{}, MyState> {
 			]
 		};
 	}
+
 	setDragObject = (index: number, name: string) => {
 		this.setState({
 			index: index,
@@ -737,14 +740,14 @@ export class MainComponent extends React.Component<{}, MyState> {
 		this.setState({
 			users: object
 		});
-		console.log('iuun', id, forRemove);
 	};
 
-	render() {
-		const ListView = this.state.users.map((item, index) => {
+	getListView = () => {
+		return this.state.users.map((item, index) => {
 			if (!item.state)
 				return (
 					<ViewUserList
+					  key={index}
 						users={this.state.users}
 						data={item}
 						dataIndex={item.id}
@@ -753,13 +756,15 @@ export class MainComponent extends React.Component<{}, MyState> {
 				);
 			else return null;
 		});
+	}
 
+	render() {
 		return (
 			<div className="main-container">
 				<div className="header-section">Drag & Drop Assignment</div>
 				<div className="body-section">
 					<div className="list-section" id="myList">
-						{ListView}
+						{this.getListView()}
 					</div>
 					<DropSheet
 						users={this.state.users}

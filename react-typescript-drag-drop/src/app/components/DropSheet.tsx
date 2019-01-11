@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-interface DProps {
+interface DropSheetProps {
 	users: {
 		id: number;
 		first_name: string;
@@ -11,28 +11,30 @@ interface DProps {
 	name: string;
 	setListItemStatus: any;
 }
-interface DStates {
+
+interface DropSheetStates {
 	dropId: {
 		id: string;
 		name: string;
 		idList: number;
 	}[];
 }
-export default class DropSheet extends React.Component<DProps, DStates> {
+
+export default class DropSheet extends React.Component<DropSheetProps, DropSheetStates> {
 	constructor(props: any) {
 		super(props);
 		this.state = {
 			dropId: []
 		};
 	}
-	onDragEnter = (ev: any): any => {
-		ev.target.style.background = 'green';
-	};
 
 	onDragLeave = (ev: any): any => {
 		ev.target.style.background = 'white';
 	};
+
 	onRemove = (ev: any, id: any): any => {
+		console.log('if', ev, id);
+		
 		ev.target.parentNode.style.background = 'white';
 		this.setState({
 			dropId: this.state.dropId.filter((item) => {
@@ -45,9 +47,9 @@ export default class DropSheet extends React.Component<DProps, DStates> {
 			})
 		});
 	};
+
 	dropHandler = (ev: any): any => {
-		// console.log('drop Handler',ev.target.id)
-		ev.preventDefault();
+	
 		ev.target.style.background = 'burlywood';
 		this.setState({
 			dropId: [
@@ -56,11 +58,22 @@ export default class DropSheet extends React.Component<DProps, DStates> {
 			]
 		});
 		this.props.setListItemStatus(this.props.objectIndex, false);
+		this.props.users.some((item, index): any => {
+
+			let tempElement = document.getElementById(`s${index}`);
+			
+			if (!tempElement.hasChildNodes()) {
+				tempElement.style.border = '1px gray solid';
+				return true;
+			}
+		});
 	};
+
 	dragOver = (ev: any): any => {
-		// console.log("dragOver");
+		ev.target.style.background = 'green';
 		ev.preventDefault();
 	};
+	
 	render() {
 		let col1Element: any[] = [];
 		let col2Element: any[] = [];
@@ -69,20 +82,19 @@ export default class DropSheet extends React.Component<DProps, DStates> {
 		this.props.users.map((item, index) => {
 			if (this.state.dropId.length === 0) {
 				tempElement = (
-					<div
-						id={'s' + index}
+					<div key={index}
+						id={`s${index}`}
 						className="dropable-element"
-						onDragEnter={(event) => this.onDragEnter(event)}
-						onDragLeave={(event) => this.onDragLeave(event)}
-						onDrop={(event) => this.dropHandler(event)}
-						onDragOver={(event) => this.dragOver(event)}
+						onDragLeave={this.onDragLeave}
+						onDrop={this.dropHandler}
+						onDragOver={this.dragOver}
 					/>
 				);
 			} else {
 				for (let i = 0; i < this.state.dropId.length; i++) {
-					if (this.state.dropId[i].id === 's' + index) {
+					if (this.state.dropId[i].id === `s${index}`) {
 						tempElement = (
-							<div id={'s' + index} className="dropable-element">
+							<div key={index} id={`s${index}`} className="dropable-element">
 								<div className="inner-sheet-content">{this.state.dropId[i].name} </div>
 								<button onClick={() => this.onRemove(event, this.state.dropId[i].id)}> x </button>
 							</div>
@@ -90,13 +102,12 @@ export default class DropSheet extends React.Component<DProps, DStates> {
 						break;
 					} else {
 						tempElement = (
-							<div
-								id={'s' + index}
+							<div key={index}
+								id={`s${index}`}
 								className="dropable-element"
-								onDragEnter={(event) => this.onDragEnter(event)}
-								onDragLeave={(event) => this.onDragLeave(event)}
-								onDrop={(event) => this.dropHandler(event)}
-								onDragOver={(event) => this.dragOver(event)}
+								onDragLeave={this.onDragLeave}
+								onDrop={this.dropHandler}
+								onDragOver={this.dragOver}
 							/>
 						);
 					}

@@ -56,7 +56,14 @@ body {
 	border-radius: 5px;
 	width: 80%;
 	padding: 10px 0px;
+	background-color: white;
+	animation-name: example;
+	animation-duration: 1s;
 }
+@keyframes example {
+	from {background-color: gray;}
+	to {background-color: white;}
+  }
 .list-item:hover {
 	background-color: rgb(71, 199, 192);
 	cursor: -webkit-grab;
@@ -70,7 +77,10 @@ body {
 	min-width: 25%;
     justify-content: center;
 	align-items: center;
-	color: white
+	color: white;
+	background-color: white;
+	animation-name: example;
+	animation-duration: 1s;
 }
 button {
 	background: white;
